@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly2.ViewModels;
 using Vidly2.Models;
 
 namespace Vidly2.Controllers
@@ -14,36 +15,39 @@ namespace Vidly2.Controllers
         {
             var movie = new Movie() { Name = "Shrek!" };
 
-            //  return View(movie);
             //return Content("hi");
-            //return HttpNotFound();
+            // return HttpNotFound();
             //return new EmptyResult();
-            // return RedirectToAction("Index", "Home", new { page = 1, sortby = "name" });
-            // var customers = new List<Customers>
+            //return RedirectToAction("Index", "Home", new { page = 1, sortby = "name" });
+            var customers = new List<Customers>
 
-            //{
-            //     new Customers {name="customer 1" },
-            //new Customers { name="customer 2"} };
+            {
+                 new Customers {name="customer 1" },
+            new Customers { name="customer 2"} };
 
-            // var viewmodel = new RandomMovieViewModel
-            // {
-            //     Movie = movie,
+            var viewmodel = new RandomMovieViewModel
+            {
+                Movie = movie,
 
-            //     Customers = customers
-            // };
+                Customers = customers
+            };
 
-            // return View(viewmodel);
-            return View(movie);
+            return View(viewmodel);
+            //return View(movie);
         }
 
 
 
-        public ActionResult Edit(int movieId)
+        public ActionResult Edit(int id)
         {
 
-            return Content("movieId= " + movieId);
+            return Content("id= " + id);
 
         }
+
+
+
+
 
         public ActionResult Index(int? pageindex, string sortby)
         {
@@ -57,8 +61,13 @@ namespace Vidly2.Controllers
             {
                 sortby = "name";
             }
-            return Content(string.Format("pageindex={0}, sortby={0}", pageindex, sortby));
+            return Content(string.Format("pageindex={0}, sortby={1}", pageindex, sortby));
         }
+
+
+
+
+
 
         public ActionResult realesdate(int year, int month)
         {
@@ -66,6 +75,6 @@ namespace Vidly2.Controllers
             return Content(year + "/" + month);
         }
 
-//test
+
     }
 }
