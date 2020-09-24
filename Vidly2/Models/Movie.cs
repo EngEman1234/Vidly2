@@ -11,4 +11,3 @@ namespace Vidly2.Models
         public string Name { get; set; }
     }
 }
-///
